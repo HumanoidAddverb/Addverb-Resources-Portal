@@ -191,9 +191,61 @@
         color: #F9F9F9;
     }
 
-    /* Responsive tweaks */
-    @media(max-width: 600px) {
-        .menu {
-            display: none;
+
+    @media screen and (max-width:1600px){
+        .card h3{
+            font-size: 1.2vw;
+            margin-bottom: 0;
+        }
+
+        .card p{
+            font-size: 1vw;
+        }
+
+        .card{
+            padding: 2% 5%;
+        }
+    }
+
+    @media screen and (max-width:600px) {
+        nav{
+            flex-direction: column;
+        }
+
+        nav img{
+            width: 45vw;
+        }
+
+        .banner{
+            flex-direction: column;
+            height: auto;
+            margin-top: 10%;
+        }
+
+        .banner img{
+            height: 35vh;
+        }
+
+        .banner h1{
+            font-size: 9vw;
+            font-weight: 800;
+            line-height: 8.5vw;
+        }
+
+        .section-main h2{
+            font-size: 6vw; 
+        }
+
+        .section-main {
+            padding: 1rem 0rem;
+            max-width: 80%;
+        }
+
+        .card h3{
+            font-size: 3.2vw;
+        }
+
+        .card p{
+            font-size: 2vw;
         }
     }
