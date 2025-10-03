@@ -1,40 +1,96 @@
-const modeToggle = document.getElementById('modeToggle');
-const body = document.body;
-const icon = document.getElementById('icon');
-sec = document.getElementsByClassName('section-main');
-menu = document.getElementsByClassName('menu-button');
-img = document.getElementById('doc-image');
-const mode_icon = document.getElementById('mode-icon');
 
-if (localStorage.getItem('mode') === 'dark') {
-    body.classList.add('dark-mode');
-    img.src="doc-portal-b.png";
-    mode_icon.classList.replace('fa-moon', 'fa-sun');
-    
-    for(i=0; i<3;i++){
-        sec[i].classList.add('dark-mode');
-        menu[i].classList.add('dark-mode');
-    }
+const words = ['source', 'minds', 'possibilities'];
+let index = 0;
+const word2Element = document.getElementById('word2');
+
+function scrollWord(word) {
+    word2Element.textContent = word;
+
+    // Start: word is below (translateY(100%))
+    word2Element.style.transform = 'translateY(-100%)';
+
+    // Animate it up into view (translateY(0))
+    setTimeout(() => {
+        word2Element.style.transform = 'translateY(0)';
+    }, 50);
+
+    // Stay visible for 1 second, then scroll up out of view (translateY(-100%))
+    setTimeout(() => {
+        word2Element.style.transform = 'translateY(100%)';
+    }, 2000);
+
+    // After scrolling out, show next word
+    setTimeout(() => {
+        index = (index + 1) % words.length;
+        scrollWord(words[index]);
+    }, 2500);
 }
-else{
-    img.src="doc-portal-w.png";
+
+scrollWord('Source')
+
+const cards = document.querySelectorAll('.cardss');
+let sec = document.querySelectorAll('.library');
+const robot = document.getElementById('robot');
+
+let current = 0;
+
+function updateCards() {
+    cards.forEach((card, i) => {
+        card.style.zIndex = cards.length - i;
+        if (i === current) {
+            card.style.transform = "translateX(0) scale(1)";
+            card.style.opacity = "1";
+        } else if (i < current) {
+            card.style.transform = "translateX(-100%) scale(0.9)";
+            card.style.opacity = "0";
+        } else {
+            card.style.transform = `translateY(${(i - current) * 20}px) scale(0.95)`;
+            card.style.opacity = "0.7";
+        }
+
+    });
 }
-modeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    for(i=0; i<3;i++){
-        sec[i].classList.toggle('dark-mode');
-        menu[i].classList.toggle('dark-mode');
-    }
 
-    if (body.classList.contains('dark-mode')) {
-        mode_icon.classList.remove('fa-moon');
-        mode_icon.classList.add('fa-sun');
-        localStorage.setItem('mode', 'dark');
+document.getElementById("next").addEventListener("click", () => {
+    console.log("next =- ")
+    current = (current + 1) % cards.length;
 
-        img.src="doc-portal-b.png";
-    } else {
-        mode_icon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('mode', 'light');
-        img.src="doc-portal-w.png";
+    sec[0].style.display = 'none';
+    sec[1].style.display = 'none';
+    sec[2].style.display = 'none';
+    sec[current].style.display = 'flex';
+
+    if(current==0){
+        robot.src="syncro.png";
     }
+    else if(current == 1){
+        robot.src="Trakr.png";
+    }
+    else{
+        robot.src="elix.png";
+    }
+    updateCards();
 });
+
+document.getElementById("prev").addEventListener("click", () => {
+    current = (current - 1 + cards.length) % cards.length;
+    sec[0].style.display = 'none';
+    sec[1].style.display = 'none';
+    sec[2].style.display = 'none';
+    sec[current].style.display = 'flex';
+
+    if(current==0){
+        robot.src="syncro.png";
+    }
+    else if(current == 1){
+        robot.src="Trakr.png";
+    }
+    else{
+        robot.src="elix.png";
+    }
+    updateCards();
+});
+
+updateCards();
+
+
