@@ -27,6 +27,7 @@
 
     .folders{
         width: 30%;
+        margin-bottom: 5%;
     }
 
     .main-image{
@@ -81,7 +82,7 @@
     .section-main {
         max-width: 70%;
         margin: auto;
-        border-bottom: 1px solid rgb(83, 81, 81);
+        margin-bottom: 5%;
     }
 
     .section-main h2 {
@@ -420,6 +421,28 @@
             width: 2.5vw;
         }
 
+        .small-p, .last-line{
+            display: none;
+        }
+
+        .folders{
+            margin-bottom: 0;
+        }
+
 
     }
 
+
+    .small-p{
+        font-size: 0.9vw !important;
+        padding-right: 20%;
+    }
+
+    .last-line{
+        font-size: 0.9vw !important;
+        margin-top: 1%;
+    }
+
+    .right-lib .lib img{
+        width: 12%;
+    }
