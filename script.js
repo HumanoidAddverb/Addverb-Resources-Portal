@@ -48,7 +48,7 @@ function updateCards() {
             if(i == 1){
                 card.style.transform = `translateY(${(i - current) * 6 + 1}vh) scale(0.95)`;
             }else{
-                card.style.transform = `translateY(${(i - current) * 6 + 1}vh) scale(0.9)`;
+                card.style.transform = `translateY(${(i - current) * 6 + 1.2}vh) scale(0.9)`;
             }
 
             
