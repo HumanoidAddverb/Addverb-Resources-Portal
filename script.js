@@ -44,10 +44,20 @@ function updateCards() {
             card.style.transform = "translateX(-100%) scale(0.9)";
             card.style.opacity = "0";
         } else {
-            card.style.transform = `translateY(${(i - current) * 6}vh) scale(0.95)`;
+
+            if(i == 1){
+                card.style.transform = `translateY(${(i - current) * 6 + 1}vh) scale(0.95)`;
+            }else{
+                card.style.transform = `translateY(${(i - current) * 6 + 1}vh) scale(0.9)`;
+            }
+
             
-            if(window.screen.width < 600){
-                card.style.transform = `translateY(${(i - current) * 2}vh) scale(0.95)`;
+            if (window.screen.width < 600) {
+                if (i == 1) {
+                    card.style.transform = `translateY(${(i - current) * 3}vh) scale(0.95)`;
+                } else {
+                    card.style.transform = `translateY(${(i - current) * 3}vh) scale(0.9)`;
+                }
             }
             
             card.style.opacity = "1";
