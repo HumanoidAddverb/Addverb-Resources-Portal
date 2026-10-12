@@ -291,10 +291,11 @@
     }
     
     .library{
-        display: none;
-        justify-content: space-evenly;
-        padding-top: 3%;
-    }
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 3%;
+}
 
     .lib{
         padding: 1% 5%;
@@ -679,5 +680,98 @@
     .shorttext{font-size: 2.2vw !important;}
     .library h4 {
         top:-6%;
+    }
+}
+/* ---------- Student Repositories ---------- */
+
+:root {
+    --lib-pad-y: 0.4vw;     
+    --lib-pad-x: 1.98vw;
+    --repo-pad-y: 1.43vw;    
+    --repo-pad-x: 3.56vw;
+    --repo-icon: 4.3vw;
+    --repo-gap: 4.4vw;
+}
+@media screen and (max-width: 1600px) {
+    :root {
+        --repo-pad-y: 0.71vw;
+        --repo-pad-x: 1.78vw;
+        --repo-icon: 4.8vw;
+    }
+}
+@media screen and (max-width: 600px) {
+    :root {
+        --lib-pad-y: 0.88vw;
+        --lib-pad-x: 4.4vw;
+        --repo-pad-y: 1.58vw;
+        --repo-pad-x: 3.96vw;
+        --repo-icon: 8.9vw;
+        --repo-gap: 7vw;
+    }
+}
+
+.student-lib {
+    flex: 0 0 93.33%;       
+    margin-top: var(--repo-gap);
+}
+
+/* override the % padding from .lib */
+.student-lib .lib {
+    padding: var(--lib-pad-y) var(--lib-pad-x);
+}
+
+/* tag: inherits .library h4 size, only position is fixed */
+.student-lib h4 {
+    top: 0;
+    transform: translateY(-50%);
+}
+
+.student-lib .repo-card {
+    justify-content: space-between;
+    padding: var(--repo-pad-y) var(--repo-pad-x);
+}
+
+.student-lib .card:last-child {
+    border-bottom: none;
+}
+
+.repo-main {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    flex: 1;              
+}
+
+.student-lib .repo-card img {
+    width: var(--repo-icon);
+    flex-shrink: 0;
+}
+
+
+.repo-link {
+    order: 1;              
+    flex: 0 0 14vw;        
+    text-align: left;
+    font-size: inherit;
+    font-weight: 600;
+    color: #fff;
+}
+
+.repo-link:hover {
+    color: #EE3223;
+}
+a.repo-main {
+    color: #fff;
+}
+
+
+@media screen and (max-width: 600px) {
+    .student-lib { flex: 0 0 100%; }
+    .student-lib .repo-card { flex-wrap: wrap; }
+    .repo-main { width: 100%; flex: 0 0 100%; gap: 3vw; }
+    .repo-link {
+        order: 0;          
+        flex: 0 0 100%;
+        margin-top: 8px;
     }
 }
